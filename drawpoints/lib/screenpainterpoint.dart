@@ -2,6 +2,27 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+class ScreenPainterPoint extends StatelessWidget {
+  const ScreenPainterPoint({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Size size =  MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Draw points'),
+      ),
+      body: Container(
+        width: size.width,
+        height: size.height,
+        child: CustomPaint(
+          painter: AppPainter(),
+        ),
+      ),
+    );
+  }
+}
+
 class AppPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

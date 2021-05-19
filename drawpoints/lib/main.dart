@@ -1,4 +1,5 @@
-import 'package:drawpoints/apppainter.dart';
+import 'package:drawpoints/screenpainterline.dart';
+import 'package:drawpoints/screenpainterpoint.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,15 +34,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size =  MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
 
         title: Text(widget.title),
       ),
-      body: Container(
-        child: CustomPaint(
-          painter: AppPainter(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => ScreenPainterPoint()));
+              },
+              child: const Text('Draw points'),
+            ),
+            const SizedBox(height: 30),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => ScreenPainterLine()));
+              },
+              child: const Text('Draw line'),
+            ),
+          ],
         ),
-      ),);
+      )
+    );
   }
 }
